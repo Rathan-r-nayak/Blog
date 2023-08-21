@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLOG|Post</title>
+
+    <style>
+        form label 
+        {
+            display: block;
+            margin-top: 10px;
+        }
+
+        form input[type="submit"]
+        {
+            display: block;
+            align-items: center;
+            border-radius: 5px;
+            margin: 30px auto;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form textarea 
+        {
+            width: 90%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        form input[type="submit"] 
+        {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="form">
+        <form method="post" action="submitBlog">
+            <input id = "csrf_token" name = "csrf_token" type = "hidden" />
+            <label for="title">Blog Title</label>
+            <input type="text" id="bTitle" name="title" required>
+
+            <label for="blogContent">Blog Content</label>
+            <textarea type="text" id="bContent" name="blogContent" rows="10" required></textarea>
+
+            <label for="author">Blog Author</label>
+            <input type="text" id="bAuthor" name="author" required>
+
+            <input type="submit">
+        </form>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLOG</title>
+    <style>
+                body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-right: 50px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: #333;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                z-index: 1;
+            }
+
+            .navbar.active .nav-links {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .div_blog
+        {
+            margin: 10px;
+            height: 300px;
+            color: aliceblue;
+            width: 340px;
+            border: 2px solid rgb(0, 255, 242);
+            padding: 10px;
+            text-align: center;
+        }
+        #blogs
+        {
+            margin: 10px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .div_blog
+        {
+            background-color: aliceblue;
+            border-radius: 10px;
+        }
+        .blog_tit
+        {            
+            color: rgb(0, 115, 255);
+            font-size: larger;
+            font-weight:bolder;
+            text-align: center;
+            text-decoration: underline;
+            
+        }
+        #blogs
+        {
+            margin-left: 20px;
+            margin-right: 20px;
+            justify-content: space-between;
+        }
+        .blog_det{
+            color: black;
+            font-size: medium;
+        }
+
+        #delete{
+            display: block;
+            margin-top: 130px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/"><img title="blog" alt="logo" height="60px" src="./static/logo.png" alt=""></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="post">Post</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+        <script src="script.js"></script>
+    </header>
+
+
+
+    <main>
+        <div id="blogs">
+            {%for i in ob%}
+            <div class="div_blog">
+                <p class="blog_tit"><a class="book_tit" href="{{i.title}}"> {{i.title}}</a></p>
+                <hr>
+                <p class="blog_det">Author: {{i.author}}</p>
+                <p class="blog_det">Published: {{i.date}}</p>
+                <a id="delete" href="deletedata/{{i.sno}}">
+                    <img src="/static/delete.png" height="25px" alt="">
+                </a>
+            </div>
+            {%endfor%}
+        </div>
+    </main>
+
+
+    <!-- <footer class="footer">
+        <div class="contact-details">
+            <h3>Contact Us</h3>
+            <p>Email: rathannayak300@gmail.com</p>
+            <p>Phone: 8494891094</p>
+            <p>Address: Udupi, Karnataka India</p>
+        </div>
+        <p>&copy; 2023 Your Website. All rights reserved.</p>
+    </footer> -->
+
+
+
+</body>
+<script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
+</html>
